@@ -1,0 +1,3 @@
+/* page-local (screens/stock-counts.html): stacked difference value (amount + breakdown) */
+.scl-diff { display: grid; justify-items: end; gap: 2px; }
+.scl-progress { display: grid; justify-items: end; gap: 2px; }

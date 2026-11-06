@@ -1,0 +1,120 @@
+Inventory Manager — e2e scenarios against http://127.0.0.1:8094 (2026-11-06T01:25:03.229Z)
+
+a) Auth: sign up, sign out, sign in, session
+  ✓ open /sign-up (113 ms)
+  ✓ sign up a new account → dashboard (328 ms)
+  ✓ dashboard is empty (new account) (30 ms)
+  ✓ account menu → Sign out → confirm dialog (358 ms)
+  ✓ app route after sign-out redirects to /sign-in (32 ms)
+  ✓ sign in with a wrong password → error alert (235 ms)
+  ✓ sign in with the right password → dashboard (238 ms)
+  ✓ reload keeps the session (45 ms)
+  PASS a — 8 steps, 1.6 s
+
+b) Categories: create, duplicate, rename, delete, delete blocked
+  ✓ open /categories (empty) (72 ms)
+  ✓ create “Hardware” (301 ms)
+  ✓ create “Spare” (583 ms)
+  ✓ duplicate name (case-insensitive) → inline error (706 ms)
+  ✓ rename “Spare” → “Spare parts” (363 ms)
+  ✓ delete unused “Spare parts” (confirm) (533 ms)
+  ✓ delete blocked for a category used by a product (381 ms)
+  PASS b — 7 steps, 3.2 s
+
+c) Products: validation, duplicate SKU, edit, archive/restore, list filters, CSV
+  ✓ new product: submit empty → validation errors (88 ms)
+  ✓ invalid price → field error (46 ms)
+  ✓ valid product → created, details page (119 ms)
+  ✓ duplicate SKU → error naming the owner (161 ms)
+  ✓ edit product name → saved (210 ms)
+  ✓ archive without stock → confirm (no warning) → archived (357 ms)
+  ✓ restore → active again (282 ms)
+  ✓ archive with stock → warning text → archive & restore (674 ms)
+  ✓ list: search by SKU (611 ms)
+  ✓ list: category filter (285 ms)
+  ✓ list: low stock only (Nails 3 ≤ 5, screws 0 ≤ 100) (101 ms)
+  ✓ list: archived tab (118 ms)
+  ✓ Export CSV → file with expected header (119 ms)
+  PASS c — 13 steps, 3.5 s
+
+d) Receipts: validation, draft, post, average cost, reverse, reverse refused
+  ✓ new receipt: Post disabled until a product is chosen (65 ms)
+  ✓ qty 0 on line 1 + line 2 without product → validation errors (111 ms)
+  ✓ save draft (10 × $2.00, supplier) → draft URL (100 ms)
+  ✓ post the draft (confirm dialog) → posted, stock 10 (417 ms)
+  ✓ second receipt 30 × $3.00 posted via UI (424 ms)
+  ✓ product page: stock 40, average cost (10×2 + 30×3)/40 = $2.75 (60 ms)
+  ✓ reverse the second receipt (confirm) → reversal document page (383 ms)
+  ✓ original receipt shows “Reversed” with link to the reversal (49 ms)
+  ✓ reverse refused when stock was consumed → shortage dialog (376 ms)
+  PASS d — 9 steps, 2.3 s
+
+e) Write-offs: insufficient stock, post, reverse
+  ✓ new write-off exceeding stock on 2 lines → refusal with shortage list (141 ms)
+  ✓ server-side refusal too (stock changed after page load) (193 ms)
+  ✓ valid post (confirm) → stock decreased (419 ms)
+  ✓ reverse (confirm) → reversal document, stock restored (341 ms)
+  PASS e — 4 steps, 1.3 s
+
+f) Stock count: category scope, surplus/shortage/not counted, post
+  ✓ new stock count for category “Aisle 1” (170 ms)
+  ✓ enter actual quantities: surplus 12, shortage 7, one not counted (13 ms)
+  ✓ save draft (45 ms)
+  ✓ post adjustments → confirm summary → posted (305 ms)
+  ✓ stock set to actual for counted lines; not counted unchanged (17 ms)
+  ✓ history shows the stock count adjustments (51 ms)
+  PASS f — 6 steps, 0.9 s
+
+g) History: type and product filters, link to document
+  ✓ history lists all 3 movements (66 ms)
+  ✓ filter by type = Write-off (20 ms)
+  ✓ filter by product (type reset) (33 ms)
+  ✓ document link opens the receipt (77 ms)
+  ✓ product page “View full history” opens History filtered by that product (634 ms)
+  PASS g — 5 steps, 1.1 s
+
+h) Reports: all 5 with demo data, parameters, CSV export
+  ✓ stock-on-date: renders with data (65 ms)
+  ✓ stock-on-date: change parameters → re-rendered (72 ms)
+      stock-on-date-2026-11-01.csv → docs/evidence/csv/report-stock-on-date.csv (29 rows) header: SKU,Product,Category,Unit,Qty on date,Avg cost,Value
+  ✓ stock-on-date: export CSV (46 ms)
+  ✓ movement: renders with data (51 ms)
+  ✓ movement: change parameters → re-rendered (70 ms)
+      movement-2026-10-01-to-2026-11-05.csv → docs/evidence/csv/report-movement.csv (29 rows) header: SKU,Product,Unit,Opening,Received,Written off,Adjustments,Closing,Opening value,Received value,Written off value,Adjustments value,Closing value
+  ✓ movement: export CSV (46 ms)
+  ✓ low-stock: renders with data (54 ms)
+  ✓ low-stock: change parameters → re-rendered (74 ms)
+      low-stock-2026-11-06.csv → docs/evidence/csv/report-low-stock.csv (2 rows) header: SKU,Product,Category,Unit,Stock,Min stock,Shortfall,Last receipt,Status
+  ✓ low-stock: export CSV (49 ms)
+  ✓ write-offs-by-reason: renders with data (28 ms)
+  ✓ write-offs-by-reason: change parameters → re-rendered (73 ms)
+      write-offs-by-reason-2026-09-01-to-2026-11-06.csv → docs/evidence/csv/report-write-offs-by-reason.csv (7 rows) header: Reason,Documents,Line items,Value,Share %
+  ✓ write-offs-by-reason: export CSV (50 ms)
+  ✓ stock-value: renders with data (51 ms)
+  ✓ stock-value: change parameters → re-rendered (52 ms)
+      stock-value-plumbing-2026-11-06.csv → docs/evidence/csv/report-stock-value.csv (5 rows) header: SKU,Product,Unit,Stock,Avg cost,Value,Share %
+  ✓ stock-value: export CSV (46 ms)
+  PASS h — 15 steps, 1.1 s
+
+i) Demo lifecycle: try demo, expire, new demo, sign out & delete
+      demo account: demo-1b971765@demo.inventory.app
+  ✓ sign-in page → Try demo → dashboard with data + demo banner (296 ms)
+  ✓ reload keeps the demo session (29 ms)
+  ✓ expire via SQL → reload → /demo-expired (372 ms)
+  ✓ psql: expired demo user and its products are deleted (150 ms)
+      new demo account: demo-e2d6a052@demo.inventory.app
+  ✓ Start a new demo from the expired screen → new demo dashboard (190 ms)
+  ✓ sign out of demo → “Sign out and delete demo” → signed-out (demo variant) (299 ms)
+  ✓ psql: demo account and its data are gone (203 ms)
+  PASS i — 7 steps, 1.7 s
+
+Summary: 9/9 scenarios passed, 74 steps ✓
+  PASS  a) Auth: sign up, sign out, sign in, session — 8 steps
+  PASS  b) Categories: create, duplicate, rename, delete, delete blocked — 7 steps
+  PASS  c) Products: validation, duplicate SKU, edit, archive/restore, list filters, CSV — 13 steps
+  PASS  d) Receipts: validation, draft, post, average cost, reverse, reverse refused — 9 steps
+  PASS  e) Write-offs: insufficient stock, post, reverse — 4 steps
+  PASS  f) Stock count: category scope, surplus/shortage/not counted, post — 6 steps
+  PASS  g) History: type and product filters, link to document — 5 steps
+  PASS  h) Reports: all 5 with demo data, parameters, CSV export — 15 steps
+  PASS  i) Demo lifecycle: try demo, expire, new demo, sign out & delete — 7 steps

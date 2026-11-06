@@ -1,0 +1,9 @@
+/* Page-local layout (tokens only) — from screens/categories.html */
+.cat-wrap { max-width: 880px; }
+.result-line { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-2) var(--sp-3); margin-bottom: var(--sp-3); font-size: var(--fs-14); color: var(--text-2); }
+/* impl: TASK-004 — actions stay on one line, same compact style (both small secondary buttons; Delete in red) */
+.row-actions { display: inline-flex; flex-wrap: nowrap; align-items: center; justify-content: flex-end; gap: var(--sp-2); white-space: nowrap; }
+.row-actions .btn-row-delete { color: var(--danger); }
+.row-actions .btn-row-delete:hover { color: var(--danger-hover); background: var(--danger-50); border-color: var(--danger-200); }
+.error-text[hidden] { display: none; }
+.usage-note { display: inline-flex; align-items: center; gap: var(--sp-1); }

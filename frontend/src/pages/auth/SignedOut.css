@@ -1,0 +1,9 @@
+/* screens/signed-out.html — page-local helpers (tokens only); scoped to the page. */
+[data-page="signed-out"] .auth-card.is-centered { text-align: center; justify-items: center; }
+[data-page="signed-out"] .auth-card.is-centered .empty-state-icon { margin-bottom: 0; background: var(--success-50); color: var(--success); }
+[data-page="signed-out"] .auth-head { display: grid; gap: var(--sp-2); }
+[data-page="signed-out"] .auth-actions { display: grid; gap: var(--sp-2); width: 100%; }
+[data-page="signed-out"] .auth-actions .btn { min-height: var(--tap); }
+[data-page="signed-out"] .auth-footer a { display: inline-flex; align-items: center; min-height: var(--tap); }
+[data-page="signed-out"] .auth-footer a[aria-busy="true"], [data-page="signed-out"] .btn[aria-busy="true"] { pointer-events: none; cursor: progress; }
+[data-page="signed-out"] .alert { width: 100%; text-align: left; }

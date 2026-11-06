@@ -1,0 +1,13 @@
+{
+  "name": "inventory-manager-e2e",
+  "private": true,
+  "type": "module",
+  "description": "End-to-end browser scenarios and app-vs-mockup screenshots through Caddy (uses locally installed Google Chrome).",
+  "scripts": {
+    "scenarios": "node scenarios.mjs",
+    "screenshots": "node screenshots.mjs"
+  },
+  "dependencies": {
+    "playwright-core": "^1.64.1"
+  }
+}

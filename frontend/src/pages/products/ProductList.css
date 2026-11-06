@@ -1,0 +1,12 @@
+/* Page-local helpers (tokens only) — from screens/products.html */
+.result-line { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-2) var(--sp-3); margin-bottom: var(--sp-3); font-size: var(--fs-14); color: var(--text-2); }
+.mobile-sort { display: none; }
+.name-cell { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-1) var(--sp-2); }
+@media (max-width: 767.98px) {
+  .mobile-sort { display: flex; align-items: center; gap: var(--sp-2); flex: 1 1 100%; }
+  .mobile-sort label { flex: none; font-size: var(--fs-14); font-weight: var(--fw-semibold); }
+  .mobile-sort .select { flex: 1 1 auto; }
+  .toolbar .chip, .toolbar .segmented > button { min-height: var(--tap); }
+  .toolbar .segmented { flex: 1 1 100%; }
+  .toolbar > .select { flex: 1 1 100%; }
+}

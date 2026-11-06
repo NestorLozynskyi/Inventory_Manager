@@ -1,0 +1,33 @@
+/* screens/dashboard.html — page-local layout only (tokens only). */
+@media (min-width: 1200px) {
+  .dash-kpis { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .dash-kpis .kpi-value { font-size: var(--fs-24); }
+}
+@media (max-width: 767.98px) {
+  .dash-kpis > :first-child { grid-column: 1 / -1; }
+  .dash-charts .segmented > button { min-height: var(--tap); }
+}
+.dash-charts { display: grid; gap: var(--sp-4); grid-template-columns: minmax(0, 1fr); }
+.dash-bottom { display: grid; gap: var(--sp-4); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1200px) {
+  .dash-charts { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+  .dash-bottom { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+}
+.low-list { margin: 0; padding: 0; list-style: none; }
+.low-list li { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); padding: var(--sp-3) var(--sp-5); border-bottom: 1px solid var(--border); min-height: var(--tap); }
+.low-list li:last-child { border-bottom: 0; }
+.low-list .ll-main { min-width: 0; display: grid; gap: 2px; }
+.low-list .ll-main a { color: var(--text); font-weight: var(--fw-medium); text-decoration: none; overflow-wrap: anywhere; }
+.low-list .ll-main a:hover { color: var(--primary); text-decoration: underline; text-underline-offset: 2px; }
+.low-list .ll-side { display: grid; justify-items: end; gap: var(--sp-1); flex: none; text-align: right; font-size: var(--fs-14); font-variant-numeric: tabular-nums; }
+@media (max-width: 767.98px) { .low-list li { padding: var(--sp-3) var(--sp-4); } }
+.dash-skel-kpi { display: grid; gap: var(--sp-2); }
+/* impl: TASK-005 — the Recent operations card is narrow next to Low stock; keep its product column minimum
+   small enough to fit the card at 1440, and drop it where the card is too narrow anyway (1200–1439). */
+.recent-table { --col-grow-min: 11.25rem; }
+@media (min-width: 768px) {
+  .recent-table :is(th, td) { padding-inline: var(--sp-3); }
+  .recent-table :is(th, td):first-child { padding-left: var(--sp-4); }
+  .recent-table :is(th, td):last-child { padding-right: var(--sp-4); }
+}
+@media (min-width: 1200px) and (max-width: 1439.98px) { .recent-table { --col-grow-min: 0; } }

@@ -1,0 +1,11 @@
+/* Page-local layout (tokens only) — from screens/product.html */
+.pd-grid { display: grid; gap: var(--sp-4); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1200px) { .pd-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); align-items: start; } }
+.pd-stock { display: grid; gap: var(--sp-4); }
+.pd-big { font-size: var(--fs-32); line-height: var(--lh-tight); font-weight: var(--fw-semibold); letter-spacing: var(--tracking-tight); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.pd-stat { display: grid; gap: var(--sp-1); }
+.pd-stat-label { font-size: var(--fs-14); color: var(--text-2); font-weight: var(--fw-medium); }
+.pd-stat-row { display: grid; gap: var(--sp-4); grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: var(--sp-4); border-top: 1px solid var(--border); }
+.pd-stat-value { font-size: var(--fs-18); font-weight: var(--fw-semibold); font-variant-numeric: tabular-nums; }
+.pd-sku { font-family: var(--font-mono); }
+@media (max-width: 767.98px) { .pd-big { font-size: var(--fs-24); } }

@@ -1,0 +1,30 @@
+/* page-local styles from screens/stock-count.html — tokens only */
+/* page-local styles — tokens only */
+[hidden] { display: none !important; }
+.sc-narrow { max-width: 760px; }
+.sc-fieldset { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: var(--sp-2); }
+.sc-fieldset legend { padding: 0; margin-bottom: var(--sp-2); }
+.sc-option-sub { color: var(--text-2); }
+.sc-cat { margin: var(--sp-1) 0 0 calc(18px + var(--sp-2)); max-width: 360px; }
+.sc-progress { height: 6px; border-radius: var(--r-full); background: var(--surface-3); overflow: hidden; margin-top: var(--sp-1); }
+.sc-progress > span { display: block; height: 100%; background: var(--primary); border-radius: var(--r-full); }
+.sc-table td.sc-actual { width: 200px; }
+.sc-input { width: 176px; margin-left: auto; }
+.sc-actual .error-text { white-space: normal; justify-content: flex-end; text-align: right; margin-top: var(--sp-1); }
+.sc-flag { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: var(--sp-2); }
+.sc-table tr.is-invalid td { background: var(--danger-50); }
+.sc-confirm-totals { width: 100%; }
+.sc-switch-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-4); }
+@media (max-width: 767.98px) {
+  .chip { min-height: var(--tap); }
+  .sc-cat { margin-left: 0; max-width: none; }
+  .sc-table td.sc-actual { display: block; width: 100%; text-align: left; padding: var(--sp-2) 0; }
+  .sc-table td.sc-actual::before { display: block; max-width: none; margin-bottom: var(--sp-1); font-weight: var(--fw-semibold); color: var(--text); }
+  .sc-input { width: 100%; }
+  .sc-input .input { min-height: 56px; font-size: var(--fs-24); font-weight: var(--fw-semibold); }
+  .sc-input .input-addon { min-width: 64px; font-size: var(--fs-16); }
+  .sc-actual .error-text { justify-content: flex-start; text-align: left; }
+  .sc-table tr.is-invalid { background: var(--danger-50); border-color: var(--danger-200); }
+  .sc-table tr.is-invalid td { background: transparent; }
+  .sc-switch-row { width: 100%; }
+}

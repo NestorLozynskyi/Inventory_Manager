@@ -1,0 +1,30 @@
+﻿SKU,Product,Category,Unit,Qty on date,Avg cost,Value
+ADH-0601,Floor tile adhesive,Adhesives & Sealants,kg,287.5,0.4774,137.25
+ADH-0604,Silicone sealant clear 300 ml,Adhesives & Sealants,pcs,58,3.0741,178.30
+CLN-0701,Heavy-duty degreaser,Cleaning Supplies,l,22.75,4.2213,96.03
+CLN-0705,Microfiber cloths (10 pack),Cleaning Supplies,pack,33,5.5212,182.20
+ELC-0401,Copper wire 2.5 mm²,Electrical,m,212,0.6777,143.67
+ELC-0405,LED bulb E27 9 W,Electrical,pcs,152,1.8795,285.68
+ELC-0411,Double socket outlet,Electrical,pcs,36,3.6500,131.40
+ELC-0417,Electrical tape 19 mm,Electrical,pcs,35,0.7600,26.60
+FST-0012,Galvanized nails 50 mm,Fasteners,kg,60.5,3.1520,190.70
+FST-0015,Wood screws 4×40 mm (box of 200),Fasteners,pack,64,6.7015,428.90
+FST-0021,Drywall screws 3.5×35 mm (box of 500),Fasteners,pack,32,5.8875,188.40
+FST-0034,Hex bolt M10×60 zinc,Fasteners,pcs,340,0.4097,139.30
+FST-0038,Concrete anchor 8×60 mm,Fasteners,pcs,30,0.5500,16.50
+LMB-0102,Plywood 18 mm,Lumber & Boards,m²,86.4,14.1000,1218.24
+LMB-0110,Pine board 25×150 mm,Lumber & Boards,m,412,2.3228,956.99
+LMB-0117,OSB board 12 mm,Lumber & Boards,m²,52.08,8.3160,433.10
+PLB-0301,PVC pipe 32 mm,Plumbing,m,148,1.8305,270.91
+PLB-0306,Copper elbow 15 mm,Plumbing,pcs,210,0.9414,197.69
+PLB-0312,PTFE thread tape,Plumbing,pcs,9,0.5733,5.16
+PLB-0318,"Ball valve 1/2""",Plumbing,pcs,38,6.2579,237.80
+PNT-0198,Oil-based primer grey,Paint & Coatings,l,6.5,8.9000,57.85
+PNT-0201,Exterior paint white,Paint & Coatings,l,37.5,9.7300,364.88
+PNT-0204,Interior emulsion matt,Paint & Coatings,l,120,7.0935,851.22
+PNT-0212,Wood stain walnut,Paint & Coatings,l,14.25,12.4807,177.85
+PNT-0219,Paint roller 230 mm,Paint & Coatings,pcs,46,4.0438,186.01
+TLS-0501,Claw hammer 16 oz,Tools,pcs,12,9.3500,112.20
+TLS-0508,Cordless drill 18 V,Tools,pcs,2,61.5000,123.00
+TLS-0512,Tape measure 5 m,Tools,pcs,31,3.1387,97.30
+,Total,,,,,7435.13

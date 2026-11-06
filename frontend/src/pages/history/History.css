@@ -1,0 +1,18 @@
+/* page-local styles from screens/history.html — tokens only */
+[hidden] { display: none !important; }
+.hist-toolbar > .select { flex: 0 1 190px; min-width: 0; max-width: 100%; }
+.hist-range { display: flex; flex-wrap: wrap; gap: var(--sp-3); align-items: flex-end; margin-bottom: var(--sp-4); }
+.hist-range .field { flex: 0 1 200px; }
+.hist-active { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); margin-bottom: var(--sp-4); }
+.hist-count { font-size: var(--fs-14); color: var(--text-2); margin-right: var(--sp-2); }
+.hist-doc, .hist-qty { display: grid; gap: 2px; }
+.hist-qty { justify-items: end; }
+/* impl: results dim while a filter change reloads (data kept) */
+.hist-results.is-refreshing .table-wrap { opacity: 0.6; transition: opacity 120ms; }
+@media (max-width: 767.98px) {
+  .chip { min-height: var(--tap); }
+  .chip-remove { width: 32px; height: 32px; }
+  .hist-toolbar > .select { flex: 1 1 140px; }
+  .hist-range .field { flex: 1 1 140px; }
+  .hist-doc { justify-items: end; }
+}

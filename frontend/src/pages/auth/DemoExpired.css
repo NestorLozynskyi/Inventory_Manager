@@ -1,0 +1,13 @@
+/* screens/demo-expired.html — page-local helpers (tokens only); scoped to the page. */
+[data-page="demo-expired"] .auth-card.is-centered { text-align: center; justify-items: center; }
+[data-page="demo-expired"] .auth-card.is-centered .empty-state-icon { margin-bottom: 0; background: var(--primary-50); color: var(--primary); }
+[data-page="demo-expired"] .auth-head { display: grid; gap: var(--sp-2); }
+[data-page="demo-expired"] .auth-actions { display: grid; gap: var(--sp-2); width: 100%; }
+[data-page="demo-expired"] .auth-actions .btn { min-height: var(--tap); }
+[data-page="demo-expired"] .facts { display: grid; gap: var(--sp-2); width: 100%; margin: 0; padding: 0; list-style: none; text-align: left; /* impl: mockup ul[class] reset wins over .facts padding */ background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-md); font-size: var(--fs-14); color: var(--text-2); }
+[data-page="demo-expired"] .facts li { display: flex; gap: var(--sp-2); align-items: flex-start; }
+[data-page="demo-expired"] .facts .icon { flex: none; margin-top: 2px; color: var(--text-2); }
+[data-page="demo-expired"] .btn.is-pending { pointer-events: none; cursor: progress; }
+[data-page="demo-expired"] .spinner { display: inline-block; flex: none; width: 16px; height: 16px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: im-spin 700ms linear infinite; }
+[data-page="demo-expired"] .auth-footer a { display: inline-flex; align-items: center; min-height: var(--tap); }
+[data-page="demo-expired"] .alert { width: 100%; text-align: left; }

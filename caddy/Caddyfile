@@ -1,0 +1,46 @@
+{
+	# Admin API stays on localhost inside the container (not published).
+	admin localhost:2019
+}
+
+# Internal healthcheck endpoint, bound to loopback only (used by the Docker healthcheck).
+http://127.0.0.1:8081 {
+	bind 127.0.0.1
+	respond "ok" 200
+}
+
+# Public site. {$SITE_ADDRESS}:
+#   ":80"                 -> plain HTTP (local / behind another reverse proxy)
+#   "inventory.example.com" -> automatic HTTPS via Let's Encrypt on the VPS
+{$SITE_ADDRESS::80} {
+	encode zstd gzip
+
+	header {
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		X-Frame-Options "DENY"
+		-Server
+	}
+
+	# REST API -> FastAPI. Only /api/* is proxied; backend technical endpoints
+	# (e.g. /healthz) are not reachable from outside.
+	handle /api/* {
+		reverse_proxy backend:8000
+	}
+
+	handle {
+		root * /srv
+		# Hashed build assets can be cached forever; index.html must not be.
+		@assets path /assets/*
+		header @assets Cache-Control "public, max-age=31536000, immutable"
+		@html path / /index.html
+		header @html Cache-Control "no-cache"
+		try_files {path} /index.html
+		file_server
+	}
+
+	log {
+		output stdout
+		format console
+	}
+}

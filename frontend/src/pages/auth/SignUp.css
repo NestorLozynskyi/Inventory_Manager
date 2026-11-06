@@ -1,0 +1,16 @@
+/* screens/sign-up.html — page-local helpers (tokens only); scoped to the page. */
+[data-page="sign-up"] .auth-head { display: grid; gap: var(--sp-1); }
+[data-page="sign-up"] .auth-form { display: grid; gap: var(--sp-4); }
+[data-page="sign-up"] .auth-form fieldset { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: var(--sp-4); }
+[data-page="sign-up"] .pw-toggle { min-width: var(--tap); padding: 0 var(--sp-3); cursor: pointer; color: var(--text-2); font: inherit; font-size: var(--fs-14); font-weight: var(--fw-semibold); gap: var(--sp-1); }
+[data-page="sign-up"] .pw-toggle:hover { color: var(--text); background: var(--surface-3); }
+[data-page="sign-up"] .pw-toggle:focus-visible { position: relative; z-index: 2; }
+[data-page="sign-up"] .pw-toggle[disabled] { cursor: not-allowed; }
+[data-page="sign-up"] .error-summary ul { margin: var(--sp-1) 0 0; padding-left: 1.2em; }
+[data-page="sign-up"] .error-summary a { color: var(--danger); font-weight: var(--fw-semibold); }
+[data-page="sign-up"] .error-summary:focus, [data-page="sign-up"] .form-alert:focus { outline: var(--focus-width) solid var(--focus); outline-offset: var(--focus-offset); }
+[data-page="sign-up"] .form-alert .alert-body a { font-weight: var(--fw-semibold); }
+[data-page="sign-up"] .auth-footer { display: grid; gap: 0; }
+[data-page="sign-up"] .auth-footer a { display: inline-flex; align-items: center; min-height: var(--tap); }
+[data-page="sign-up"] .auth-footer a[aria-busy="true"] { pointer-events: none; cursor: progress; }
+[data-page="sign-up"] .auth-submit { min-height: var(--tap); }

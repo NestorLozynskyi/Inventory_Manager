@@ -1,0 +1,37 @@
+# env / secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# logs / caches
+*.log
+!docs/evidence/*.log
+.cache/
+.mypy_cache/
+test-results/
+playwright-report/
+
+# local tooling / coordination (not published)
+.ai-coordination/
+.claude/
+
+# locally generated screenshots (e2e/*shots*.mjs, e2e/screenshots.mjs) — not published
+docs/screenshots/

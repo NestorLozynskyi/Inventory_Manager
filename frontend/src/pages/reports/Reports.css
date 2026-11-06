@@ -1,0 +1,20 @@
+/* Reports — page-local styles from screens/reports.html (tokens only). */
+[hidden] { display: none !important; }
+.rp-switch-select { display: none; margin-bottom: var(--sp-4); }
+.rp-params { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--sp-4); }
+.rp-params > .field { flex: 0 1 220px; }
+.rp-static { display: flex; align-items: center; min-height: var(--control-h); font-size: var(--fs-16); color: var(--text); }
+.rp-params-error { margin-top: var(--sp-3); }
+.rp-result > .card-body + .table-wrap { border-top: 1px solid var(--border); }
+.rp-chart-title { font-size: var(--fs-14); font-weight: var(--fw-semibold); color: var(--text-2); margin-bottom: var(--sp-3); }
+.rp-cell-stack { display: grid; gap: 2px; justify-items: end; }
+.rp-note { font-size: var(--fs-14); color: var(--text-2); }
+@media (max-width: 767.98px) {
+  .rp-tabs { display: none; }
+  .rp-switch-select { display: grid; }
+  .rp-params > .field { flex: 1 1 140px; }
+  .rp-params > .rp-apply { flex: 1 1 100%; }
+  .rp-params > .rp-apply .btn { width: 100%; }
+  .rp-result .card-actions { width: 100%; }
+  .rp-result .card-actions .btn { width: 100%; }
+}

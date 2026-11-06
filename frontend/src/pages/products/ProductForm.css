@@ -1,0 +1,11 @@
+/* Page-local layout (tokens only) — from screens/product-form.html */
+.form-wrap { max-width: 880px; }
+.error-text[hidden] { display: none; }
+.error-summary ul { margin: var(--sp-1) 0 0; padding-left: var(--sp-5); }
+.error-summary li + li { margin-top: 2px; }
+.error-summary a { color: var(--danger); font-weight: var(--fw-medium); }
+.field-note { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--sp-1) var(--sp-3); }
+.form-section-title { font-size: var(--fs-16); font-weight: var(--fw-semibold); }
+.form-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-3); }
+.form-footer .hint { flex: 1 1 240px; }
+@media (max-width: 767.98px) { .form-footer .form-actions { width: 100%; } }

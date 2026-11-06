@@ -1,0 +1,106 @@
+name: ${COMPOSE_PROJECT_NAME:-inventory-manager}
+
+x-backend-env: &backend-env
+  DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-inventory}:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}@postgres:5432/${POSTGRES_DB:-inventory}
+  APP_ENV: ${APP_ENV:-production}
+  LOG_LEVEL: ${LOG_LEVEL:-INFO}
+  COOKIE_SECURE: ${COOKIE_SECURE:-false}
+  DEMO_LIFETIME_HOURS: ${DEMO_LIFETIME_HOURS:-24}
+  DEMO_RATE_LIMIT_PER_HOUR: ${DEMO_RATE_LIMIT_PER_HOUR:-10}
+  DEMO_GLOBAL_LIMIT_PER_HOUR: ${DEMO_GLOBAL_LIMIT_PER_HOUR:-500}
+
+services:
+  postgres:
+    image: postgres:18-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-inventory}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-inventory}
+    volumes:
+      - postgres-data:/var/lib/postgresql
+    # Not published by default. For host access while debugging uncomment (loopback only):
+    # ports:
+    #   - "127.0.0.1:${POSTGRES_HOST_PORT:-5444}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  # One-shot: applies Alembic migrations and exits; backend starts only after success.
+  migrate:
+    build:
+      context: ./backend
+      target: runtime
+    image: inventory-manager-backend:local
+    command: ["alembic", "upgrade", "head"]
+    environment: *backend-env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+
+  backend:
+    image: inventory-manager-backend:local
+    restart: unless-stopped
+    environment: *backend-env
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    # Port 8000 is reachable only inside the compose network (through Caddy).
+
+  caddy:
+    build:
+      context: .
+      dockerfile: caddy/Dockerfile
+    image: inventory-manager-caddy:local
+    restart: unless-stopped
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-:80}
+    ports:
+      - "${PUBLIC_BIND_ADDRESS:-127.0.0.1}:${HTTP_PORT:-8094}:80"
+      - "${PUBLIC_BIND_ADDRESS:-127.0.0.1}:${HTTPS_PORT:-8454}:443"
+      - "${PUBLIC_BIND_ADDRESS:-127.0.0.1}:${HTTPS_PORT:-8454}:443/udp"
+    volumes:
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  # ---- test profile: docker compose --profile test run --rm backend-tests ----
+  postgres-test:
+    profiles: ["test"]
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: inventory_test
+    tmpfs:
+      - /var/lib/postgresql
+    ports:
+      - "127.0.0.1:${TEST_POSTGRES_PORT:-5445}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U test -d inventory_test"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
+
+  backend-tests:
+    profiles: ["test"]
+    build:
+      context: ./backend
+      target: test
+    image: inventory-manager-backend:test
+    environment:
+      TEST_DATABASE_URL: postgresql+psycopg://test:test@postgres-test:5432/inventory_test
+    depends_on:
+      postgres-test:
+        condition: service_healthy
+
+volumes:
+  postgres-data:
+  caddy-data:
+  caddy-config:

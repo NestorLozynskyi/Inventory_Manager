@@ -1,0 +1,22 @@
+/* screens/sign-in.html — page-local helpers (tokens only); scoped to the page. */
+[data-page="sign-in"] .auth-head { display: grid; gap: var(--sp-1); }
+[data-page="sign-in"] .auth-form { display: grid; gap: var(--sp-4); }
+[data-page="sign-in"] .auth-form fieldset { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: var(--sp-4); }
+[data-page="sign-in"] .pw-toggle { min-width: var(--tap); padding: 0 var(--sp-3); cursor: pointer; color: var(--text-2); font: inherit; font-size: var(--fs-14); font-weight: var(--fw-semibold); gap: var(--sp-1); }
+[data-page="sign-in"] .pw-toggle:hover { color: var(--text); background: var(--surface-3); }
+[data-page="sign-in"] .pw-toggle:focus-visible { position: relative; z-index: 2; }
+[data-page="sign-in"] .pw-toggle[disabled] { cursor: not-allowed; }
+[data-page="sign-in"] .error-summary ul { margin: var(--sp-1) 0 0; padding-left: 1.2em; }
+[data-page="sign-in"] .error-summary a { color: var(--danger); font-weight: var(--fw-semibold); }
+[data-page="sign-in"] .error-summary:focus,
+[data-page="sign-in"] #cred-alert:focus { outline: var(--focus-width) solid var(--focus); outline-offset: var(--focus-offset); }
+[data-page="sign-in"] .btn-demo { background: var(--primary-50); color: var(--primary); border-color: var(--primary-200); min-height: var(--tap); }
+[data-page="sign-in"] .btn-demo:hover { background: var(--surface); color: var(--primary-hover); border-color: var(--primary); }
+[data-page="sign-in"] .btn-demo.is-pending, [data-page="sign-in"] .btn-primary.is-pending { pointer-events: none; cursor: progress; }
+[data-page="sign-in"] .btn-demo.is-pending { background: var(--primary-50); color: var(--primary); border-color: var(--primary-200); }
+[data-page="sign-in"] .spinner { display: inline-block; flex: none; width: 16px; height: 16px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: im-spin 700ms linear infinite; }
+[data-page="sign-in"] .demo-note { display: grid; gap: var(--sp-2); }
+[data-page="sign-in"] .demo-note .hint { text-align: center; }
+[data-page="sign-in"] .auth-footer a { display: inline-flex; align-items: center; min-height: var(--tap); }
+[data-page="sign-in"] .auth-submit { min-height: var(--tap); }
+@media (prefers-reduced-motion: reduce) { [data-page="sign-in"] .spinner { animation-duration: 2s; } }

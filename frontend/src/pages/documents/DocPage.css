@@ -1,0 +1,44 @@
+/* Document screens — page-local styles from screens/receipt.html (shared verbatim with write-off.html). */
+.back-link { display: inline-flex; align-items: center; gap: var(--sp-1); min-height: var(--tap); margin: calc(-1 * var(--sp-2)) 0 0; font-size: var(--fs-14); }
+.doc-card-body { padding: var(--sp-3); }
+.doc-lines-scroll { overflow-x: auto; }
+.doc-lines .dl-static { display: block; padding-top: 10px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.doc-lines td .hint { display: block; }
+.post-hint { padding: var(--sp-2) var(--sp-3) 0; text-align: right; }
+.doc-alert { margin-bottom: var(--sp-5); }
+.doc-lines thead .th-hint { display: block; font-size: var(--fs-12); font-weight: var(--fw-regular); color: var(--text-2); white-space: normal; }
+.readonly-value { margin: 0; min-height: var(--tap); display: flex; align-items: center; gap: var(--sp-2); font-variant-numeric: tabular-nums; }
+.readonly-value .icon, .readonly-value svg { color: var(--text-2); flex: none; }
+.doc-alert .table-wrap { margin-top: var(--sp-2); }
+.effect-list { margin: 0; padding: 0; list-style: none; border: 1px solid var(--border); border-radius: var(--r-sm); }
+.effect-list li { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-3); padding: var(--sp-2) var(--sp-3); border-bottom: 1px solid var(--border); }
+.effect-list li:last-child { border-bottom: 0; }
+.effect-list .cell-sub { display: block; font-size: var(--fs-12); color: var(--text-2); }
+.effect-qty { white-space: nowrap; font-weight: var(--fw-semibold); font-variant-numeric: tabular-nums; }
+.doc-actionbar { display: none; }
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .doc-lines th, .doc-lines td { padding-left: var(--sp-2); padding-right: var(--sp-2); }
+  .doc-lines .dl-index { width: 28px; }
+  .doc-lines .dl-product { min-width: 180px; }
+  .doc-lines .dl-qty { width: 132px; }
+  .doc-lines .dl-price { width: 120px; }
+  .doc-lines .dl-total { width: 96px; }
+  .doc-lines .dl-actions { width: 48px; }
+}
+@media (max-width: 767.98px) {
+  .doc-actionbar {
+    display: flex; gap: var(--sp-2);
+    position: fixed; left: 0; right: 0; z-index: var(--z-sticky);
+    bottom: calc(var(--bottomnav-h) + var(--safe-bottom));
+    padding: var(--sp-2) var(--page-pad-x);
+    background: var(--surface); border-top: 1px solid var(--border); box-shadow: var(--sh-1);
+  }
+  .doc-actionbar .btn { flex: 1 1 0; }
+  .app > .page.has-actionbar { padding-bottom: calc(var(--bottomnav-h) + var(--safe-bottom) + var(--tap) + var(--sp-4) + var(--sp-6)); }
+  .page.has-actionbar .page-actions .is-bar-dup { display: none; }
+  body.has-actionbar .toast-region { bottom: calc(var(--bottomnav-h) + var(--safe-bottom) + var(--tap) + var(--sp-4) + var(--sp-3)); }
+  .doc-lines .dl-static { padding-top: 0; }
+  .post-hint { padding: var(--sp-2) 0 0; text-align: left; }
+  /* write-off.html only: the line total of a write-off is its value */
+  .is-write-off .doc-lines .dl-total::before { content: "Value"; }
+}

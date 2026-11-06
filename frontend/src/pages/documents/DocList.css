@@ -1,0 +1,13 @@
+/* Receipts / write-offs lists — page-local styles from screens/receipts.html + write-offs.html (identical). */
+.date-range { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); }
+.date-range .input { width: auto; flex: 1 1 150px; min-width: 0; }
+.date-range-sep { color: var(--text-2); }
+.filter-bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); margin: calc(-1 * var(--sp-2)) 0 var(--sp-4); }
+.filter-bar .chip { gap: var(--sp-2); }
+.results-meta { margin-bottom: var(--sp-3); }
+.table .cell-link.mono { font-size: var(--fs-14); }
+@media (max-width: 767.98px) {
+  .toolbar > .date-range { flex: 1 1 100%; }
+  .table-cards td.td-primary .cell-link { display: inline-flex; align-items: center; min-height: var(--tap); }
+  .chip-remove { width: 32px; height: 32px; }
+}

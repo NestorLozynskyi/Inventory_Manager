@@ -1,0 +1,4 @@
+﻿SKU,Name,Category,Unit,Stock,Min stock,Avg cost,Stock value,Purchase price,Sale price,Status
+NAIL-01,Nails 50 mm,Fasteners,kg,3,5,4.00,12.00,4.00,2.00,Low stock
+PNT-01,White paint,Paint,l,0,,10.00,0.00,10.00,2.00,Active
+SCR-100,Wood screws 4×40 (box),Fasteners,pcs,0,100,0.25,0.00,0.25,0.40,Low stock
